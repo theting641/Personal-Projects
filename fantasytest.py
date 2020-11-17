@@ -3,7 +3,7 @@
 
 
 import requests
-#import pandas as pd
+import pandas as pd
 
 #function that uses heuristic algorithm to calculate a player's ranking
 def calculate(val1, val2):
@@ -65,7 +65,12 @@ for player in total:
                 position = y['player_position']                
                 value_rank.append([player, calculate(expert_ranking, 0), position])
 sorted_list = sorted(value_rank, key = lambda x: x[1])
-print(sorted_list)
+panda_df = pd.DataFrame(sorted_list)
+panda_df.index = panda_df.index + 1
+panda_df.columns = ["Name", "Pick Value", "Position"]
+print(panda_df)
+
+
 
 
 
